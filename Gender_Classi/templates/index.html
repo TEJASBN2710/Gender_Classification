@@ -1,0 +1,131 @@
+{% extends "import.html" %}
+{% block content %}
+
+<style>
+   
+
+    body {
+        background-image: url('static/f3.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    h2 {
+        color: #333;
+        font-weight: 600;
+    }
+
+    center {
+        margin-top: 50px;
+    }
+
+    .btn {
+        border-radius: 5px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    .btn-success {
+        background-color: #28a745;
+        color: white;
+        border: none;
+    }
+
+    .btn-success:hover {
+        background-color: #218838;
+    }
+
+    .btn-info {
+        background-color: #17a2b8;
+        color: white;
+        border: none;
+    }
+
+    .btn-info:hover {
+        background-color: #138496;
+    }
+
+    .image-section {
+        margin-top: 20px;
+    }
+
+    .img-responsive {
+        border: 2px solid #ddd;
+        border-radius: 10px;
+        padding: 5px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .loader {
+        border: 8px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 8px solid #3498db;
+        width: 60px;
+        height: 60px;
+        -webkit-animation: spin 1s linear infinite;
+        animation: spin 1s linear infinite;
+        margin: 20px auto;
+    }
+
+    @-webkit-keyframes spin {
+        0% { -webkit-transform: rotate(0deg); }
+        100% { -webkit-transform: rotate(360deg); }
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    #result {
+        margin-top: 20px;
+        color: #555;
+        font-weight: bold;
+    }
+
+    input[type="file"]::file-selector-button {
+        background-color: #28a745;
+        color: white;
+        border: none;
+        padding: 8px 12px;
+        border-radius: 4px;
+        margin-right: 10px;
+        cursor: pointer;
+    }
+
+    input[type="file"]::file-selector-button:hover {
+        background-color: #218838;
+    }
+
+    @media screen and (max-width: 600px) {
+        .img-responsive {
+            width: 200px;
+            height: 200px;
+        }
+    }
+</style>
+
+<center>
+    <br><h2>Gender Classification Using Fingerprint</h2><br>
+
+    <form id="upload-file" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" id="imageUpload" accept=".png, .jpg, .jpeg">
+    </form>
+
+    <div class="image-section" style="display:none;">
+        <img id="imagePreview" class="img-responsive" src="#" alt="Image Preview"/><br><br>
+        <div>
+            <button type="button" class="btn btn-info btn-lg" id="btn-predict">Predict!</button>
+        </div>
+    </div>
+
+    <div class="loader" style="display:none;"></div>
+
+    <h3 id="result">
+        <span></span>
+    </h3>
+
+</center><br><br>
+{% endblock %}
